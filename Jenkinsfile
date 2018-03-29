@@ -27,13 +27,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "scp -i /home/ubuntu/ng_van.chinh.pem /var/lib/jenkins/workspace/PipelineAsCodeExample/webapp/target/*.war ubuntu@${params.tomcat_dev}:/opt/tomcat/webapps"
+                        sh "scp -i ng_van.chinh.pem workspace/PipelineAsCodeExample/webapp/target/*.war ubuntu@${params.tomcat_dev}:/opt/tomcat/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "scp -i /home/ubuntu/ng_van.chinh.pem /var/lib/jenkins/workspace/PipelineAsCodeExample/webapp/target/*.war ubuntu@${params.tomcat_prod}:/opt/tomcat/webapps"
+                        sh "scp -i ng_van.chinh.pem workspace/PipelineAsCodeExample/webapp/target/*.war ubuntu@${params.tomcat_prod}:/opt/tomcat/webapps"
                     }
                 }
             }
