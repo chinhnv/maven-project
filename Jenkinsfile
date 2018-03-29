@@ -27,12 +27,14 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
+                        sh "cd ${WORKSPACE}"
                         sh "scp -i /home/ubuntu/ng_van.chinh.pem **/target/*.war ubuntu@${params.tomcat_dev}:/opt/tomcat/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
+                        sh "cd ${WORKSPACE}"
                         sh "scp -i /home/ubuntu/ng_van.chinh.pem **/target/*.war ubuntu@${params.tomcat_prod}:/opt/tomcat/webapps"
                     }
                 }
