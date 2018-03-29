@@ -27,6 +27,7 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
+                        sh "pwd; whoami"
                         sh "scp -i ng_van.chinh.pem workspace/PipelineAsCodeExample/webapp/target/*.war ubuntu@${params.tomcat_dev}:/opt/tomcat/webapps"
                     }
                 }
